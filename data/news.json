@@ -1,0 +1,42 @@
+[
+  {
+    "title": "ライフジャケットは乗船中の常時着用が義務です",
+    "date": "2026-06-01",
+    "category": "重要",
+    "pinned": true,
+    "body": "船上ではライフジャケットの常時着用が法律で義務付けられています。ライフジャケット（桜マーク付き自動膨張式救命胴衣）は、ご乗船のお客様全員分を無料でご用意しています。",
+    "link": "guide.html#rules"
+  },
+  {
+    "title": "令和８年8月２日(日) 特別キャンペーン",
+    "date": "2026-06-21",
+    "category": "キャンペーン",
+    "pinned": false,
+    "body": "",
+    "link": ""
+  },
+  {
+    "title": "LINE公式アカウントをリニューアルしました！",
+    "date": "2026-06-18",
+    "category": "お知らせ",
+    "pinned": false,
+    "body": "",
+    "link": "https://line.me/R/ti/p/@346tuzef?ts=06191040&oat_content=url"
+  },
+  {
+    "title": "予約・お問い合わせ先について",
+    "date": "2026-06-08",
+    "category": "ご予約",
+    "pinned": false,
+    "body": "",
+    "link": "index.html#contact"
+  },
+  {
+    "title": "船宿からのお願い（渡船・地磯の料金について）",
+    "date": "2026-05-10",
+    "category": "料金",
+    "pinned": false,
+    "body": "",
+    "link": "plans.html#ferry-price"
+  }
+]

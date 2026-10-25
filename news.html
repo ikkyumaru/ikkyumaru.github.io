@@ -71,29 +71,13 @@
 <section class="sec">
   <div class="news-layout">
     <div>
-      <div class="chips" role="group" aria-label="カテゴリで絞り込み" data-filter>
-      <button type="button" class="chip" data-cat="すべて" aria-pressed="true">すべて</button>
-      <button type="button" class="chip" data-cat="重要" aria-pressed="false">重要</button>
-      <button type="button" class="chip" data-cat="キャンペーン" aria-pressed="false">キャンペーン</button>
-      <button type="button" class="chip" data-cat="お知らせ" aria-pressed="false">お知らせ</button>
-      <button type="button" class="chip" data-cat="ご予約" aria-pressed="false">ご予約</button>
-      <button type="button" class="chip" data-cat="料金" aria-pressed="false">料金</button>
-      </div>
-      <ul class="news boxed" data-list>
-    <li data-cat="重要"><span class="mono date">—</span><span class="tag tag-imp">重要</span><span class="title"><a href="guide.html#rules"><b>ライフジャケットは乗船中の常時着用が義務です</b></a></span></li>
-    <li data-cat="キャンペーン"><span class="mono date">2026.06.21</span><span class="tag">キャンペーン</span><span class="title">令和８年8月２日(日) 特別キャンペーン</span></li>
-    <li data-cat="お知らせ"><span class="mono date">2026.06.18</span><span class="tag">お知らせ</span><span class="title"><a href="https://line.me/R/ti/p/@346tuzef?ts=06191040&amp;oat_content=url" target="_blank" rel="noopener">LINE公式アカウントをリニューアルしました！</a></span></li>
-    <li data-cat="ご予約"><span class="mono date">2026.06.08</span><span class="tag">ご予約</span><span class="title"><a href="index.html#contact">予約・お問い合わせ先について</a></span></li>
-    <li data-cat="料金"><span class="mono date">2026.05.10</span><span class="tag">料金</span><span class="title"><a href="plans.html#ferry-price">船宿からのお願い（渡船・地磯の料金について）</a></span></li>
-      </ul>
-      <p class="empty" data-empty hidden>このカテゴリのお知らせはまだありません。</p>
+      <div class="chips" role="group" aria-label="カテゴリで絞り込み" data-news-filter></div>
+      <ul class="news boxed" data-news-list aria-live="polite"><li class="none">読み込み中…</li></ul>
+      <p class="empty" data-news-empty hidden>このカテゴリのお知らせはまだありません。</p>
     </div>
     <aside class="side">
       <h2>月別アーカイブ</h2>
-      <ul>
-        <li><span>2026年6月</span><span>(3)</span></li>
-        <li><span>2026年5月</span><span>(1)</span></li>
-      </ul>
+      <ul data-news-archive></ul>
     </aside>
   </div>
 </section>
@@ -139,12 +123,7 @@
   if(v&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();}
 })();
 
-(function(){
-  var chips=document.querySelectorAll('[data-filter] .chip'),rows=document.querySelectorAll('[data-list] li'),empty=document.querySelector('[data-empty]');
-  function apply(c){var n=0;rows.forEach(function(r){var s=(c==='すべて'||r.dataset.cat===c);r.hidden=!s;if(s)n++;});
-    chips.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.cat===c);});empty.hidden=n>0;}
-  chips.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.cat);});});
-})();
 </script>
+<script src="assets/posts.js"></script>
 </body>
 </html>

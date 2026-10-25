@@ -1,0 +1,74 @@
+media:
+  input: assets/uploads
+  output: /assets/uploads
+
+content:
+  - name: reports
+    label: 釣果報告
+    type: file
+    path: data/reports.json
+    format: json
+    list: true
+    view:
+      primary: method
+      fields: [date, boat, method]
+    fields:
+      - name: date
+        label: 日付
+        type: date
+        required: true
+      - name: boat
+        label: 船
+        type: select
+        required: true
+        options:
+          values: [1号船, 3号船, 5号船, 渡船]
+      - name: method
+        label: 釣り物・釣り方（渡船は磯の名前）
+        type: string
+        required: true
+      - name: catch
+        label: 釣果
+        description: 例）マダイ2kg前後 計12枚、ワラサ4kg ほか
+        type: text
+        required: true
+      - name: photo
+        label: 写真
+        type: image
+      - name: comment
+        label: ひとこと（任意）
+        type: text
+
+  - name: news
+    label: お知らせ
+    type: file
+    path: data/news.json
+    format: json
+    list: true
+    view:
+      primary: title
+      fields: [date, category, title]
+    fields:
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+      - name: date
+        label: 日付
+        type: date
+        required: true
+      - name: category
+        label: カテゴリ
+        type: select
+        required: true
+        options:
+          values: [お知らせ, 重要, キャンペーン, ご予約, 料金, 出船情報]
+      - name: pinned
+        label: 一番上に固定する
+        type: boolean
+      - name: body
+        label: 本文（任意）
+        type: text
+      - name: link
+        label: リンク先URL（任意）
+        type: string

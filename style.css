@@ -125,8 +125,17 @@ dl,dd{margin:0}
 
 /* ---------- fishing reports ---------- */
 .reports{display:flex;flex-direction:column;gap:12px}
-.report{background:var(--white);padding:18px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink);border-top:3px solid var(--teal)}
-.report:hover{color:var(--ink);box-shadow:0 8px 22px rgba(10,40,40,.10)}
+.report{background:var(--white);padding:0;display:flex;flex-direction:column;gap:0;text-decoration:none;color:var(--ink);border-top:3px solid var(--teal)}
+.report-body{padding:18px;display:flex;flex-direction:column;gap:6px}
+.report-photo{width:100%;aspect-ratio:4/3;object-fit:cover;background:#D3E3DF}
+.report .comment{color:var(--muted);font-size:13px;padding-top:4px;border-top:1px dashed var(--line);margin-top:4px}
+.news li.none{display:block;color:var(--muted);font-size:14px}
+.news details summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px}
+.news details summary::-webkit-details-marker{display:none}
+.news details summary::after{content:"";margin-left:auto;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s;flex-shrink:0}
+.news details[open] summary::after{transform:rotate(-135deg)}
+.news-body{margin-top:12px;padding:16px 18px;background:var(--bg);font-size:14px;line-height:1.9;color:var(--body)}
+.news-link{margin-top:10px;font-weight:700}
 .report .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .boat-tag{padding:3px 10px;background:var(--teal);color:#fff;font-size:12px;font-weight:700}
 .report .meta{font-size:14px;color:var(--gold-ink)}
@@ -307,7 +316,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
   .features{grid-template-columns:repeat(4,1fr);gap:20px}
   .feature img{height:170px}
   .feature h3{font-size:18px}.feature p{font-size:14px}
-  .reports{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .reports{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
   .report-bar{flex-direction:row;justify-content:space-between;align-items:center}
   .tels{grid-template-columns:1fr 1fr}
   .tels a.tel-ai,.tels a.tel-line{grid-column:span 2}
@@ -384,13 +393,14 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
   .feature div{padding:24px;gap:10px}
   .feature h3{font-size:20px}.feature p{font-size:15px;line-height:1.8}
 
-  .news li{grid-template-columns:110px 110px 1fr;padding:22px 4px;gap:28px}
+  .news li{grid-template-columns:110px 110px 1fr;padding:22px 4px;gap:28px;align-items:start}
+  .news li .date,.news li .tag{margin-top:2px}
   .news.boxed li{padding:24px}
   .tag{justify-self:stretch;text-align:center;font-size:12px;padding:3px 0}
   .news .title{grid-column:auto;font-size:16px}
   .news-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:64px;align-items:start}
 
-  .report{padding:24px 26px 28px;gap:8px}
+  .report-body{padding:24px 26px 28px;gap:8px}
   .report .meta{font-size:15px}.report .method{font-size:19px}.report .catch{font-size:15px}
 
   .schedule-box{padding:56px 40px}

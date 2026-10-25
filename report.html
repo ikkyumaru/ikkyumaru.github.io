@@ -70,36 +70,17 @@
 
 <section class="sec">
   <div class="report-bar">
-    <div class="chips" role="group" aria-label="船で絞り込み" data-filter>
+    <div class="chips" role="group" aria-label="船で絞り込み" data-report-filter>
       <button type="button" class="chip" data-boat="all" aria-pressed="true">すべて</button>
       <button type="button" class="chip" data-boat="1" aria-pressed="false">1号船</button>
       <button type="button" class="chip" data-boat="3" aria-pressed="false">3号船</button>
       <button type="button" class="chip" data-boat="5" aria-pressed="false">5号船</button>
       <button type="button" class="chip" data-boat="ferry" aria-pressed="false">渡船釣果</button>
     </div>
-    <span class="count" data-count aria-live="polite">3件の釣果</span>
+    <span class="count" data-report-count aria-live="polite"></span>
   </div>
-  <div class="reports" data-list>
-    <a class="report" data-boat="1" href="https://ikkyumaru.livedoor.blog/" target="_blank" rel="noopener">
-      <span class="top"><span class="boat-tag">1号船</span><span class="mono meta">2026.09.23</span></span>
-      <span class="method">コマセ五目</span>
-      <span class="catch">シマアジ1.3〜1.5kg 船中8尾、他イナダ・カワハギ</span>
-      <span class="more">詳しく見る →</span>
-    </a>
-    <a class="report" data-boat="5" href="https://ikkyumaru.livedoor.blog/" target="_blank" rel="noopener">
-      <span class="top"><span class="boat-tag">5号船</span><span class="mono meta">2026.09.23</span></span>
-      <span class="method">中深場ジギング</span>
-      <span class="catch">メダイ4.7kg、キントキ、オニカサゴ、オキメバル ほか</span>
-      <span class="more">詳しく見る →</span>
-    </a>
-    <a class="report" data-boat="3" href="https://ikkyumaru.livedoor.blog/" target="_blank" rel="noopener">
-      <span class="top"><span class="boat-tag">3号船</span><span class="mono meta">2026.09.22</span></span>
-      <span class="method">仕立て／棒ウキふかせ釣り</span>
-      <span class="catch">マダイ2kg前後 計12枚、ワラサ4kg、カワハギ ほか</span>
-      <span class="more">詳しく見る →</span>
-    </a>
-  </div>
-  <p class="empty" data-empty hidden>この船の釣果は準備中です。最新の釣果はブログでもご覧いただけます。</p>
+  <div class="reports" data-report-list><p class="empty">読み込み中…</p></div>
+  <p class="empty" data-report-empty hidden>この船の釣果は準備中です。最新の釣果はブログでもご覧いただけます。</p>
   <div class="btns" style="justify-content:center;margin-top:28px"><a href="https://ikkyumaru.livedoor.blog/" class="btn btn-ghost" target="_blank" rel="noopener">過去の釣果をブログで見る →</a></div>
 </section>
 <section class="sec photo-band on-dark">
@@ -144,15 +125,7 @@
   if(v&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();}
 })();
 
-(function(){
-  var chips=document.querySelectorAll('[data-filter] .chip'),cards=document.querySelectorAll('[data-list] .report'),empty=document.querySelector('[data-empty]'),count=document.querySelector('[data-count]');
-  function apply(k){var n=0;cards.forEach(function(c){var s=(k==='all'||c.dataset.boat===k);c.hidden=!s;if(s)n++;});
-    chips.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.boat===k);});empty.hidden=n>0;count.textContent=n+'件の釣果';}
-  chips.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.boat);});});
-  var h=(location.hash||'').replace('#',''),map={b1:'1',b3:'3',b5:'5',ferry:'ferry'};
-  apply(map[h]||'all');
-  window.addEventListener('hashchange',function(){var h=location.hash.replace('#','');if(map[h])apply(map[h]);});
-})();
 </script>
+<script src="assets/posts.js"></script>
 </body>
 </html>
