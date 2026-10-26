@@ -482,3 +482,17 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
 
 .hero-kicker{font-size:13px;letter-spacing:.08em;color:#E1EFEC;font-weight:500}
 @media (min-width:1080px){.hero-kicker{font-size:15px}}
+
+/* Google Calendar embed (home: schedule) */
+.cal{background:var(--white);border:1px solid var(--line);padding:8px}
+.cal iframe{display:block;width:100%;border:0}
+.cal-month{display:none!important}
+.cal-agenda{height:460px}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;margin:16px 0 8px;font-size:13px;color:var(--body)}
+.legend>div{display:flex;gap:8px}
+.legend dt{font-weight:700;color:var(--teal)}
+@media (min-width:700px){
+  .cal-month{display:block!important;height:600px}
+  .cal-agenda{display:none!important}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 36px;font-size:14px}
+}
