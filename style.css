@@ -479,3 +479,6 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tels a{transition:none}.tels a:hover{transform:none}}
 
+
+.hero-kicker{font-size:13px;letter-spacing:.08em;color:#E1EFEC;font-weight:500}
+@media (min-width:1080px){.hero-kicker{font-size:15px}}
