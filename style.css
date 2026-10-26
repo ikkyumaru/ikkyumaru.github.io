@@ -486,13 +486,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offse
 /* Google Calendar embed (home: schedule) */
 .cal{background:var(--white);border:1px solid var(--line);padding:8px}
 .cal iframe{display:block;width:100%;border:0}
-.cal-month{display:none!important}
-.cal-agenda{height:460px}
+.cal-month{height:480px}
 .legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;margin:16px 0 8px;font-size:13px;color:var(--body)}
 .legend>div{display:flex;gap:8px}
 .legend dt{font-weight:700;color:var(--teal)}
 @media (min-width:700px){
-  .cal-month{display:block!important;height:600px}
-  .cal-agenda{display:none!important}
+  .cal-month{height:600px}
   .legend{display:flex;flex-wrap:wrap;gap:8px 36px;font-size:14px}
 }
