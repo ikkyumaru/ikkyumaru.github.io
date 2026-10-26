@@ -53,6 +53,8 @@ content:
         label: タイトル
         type: string
         required: true
+        options:
+          maxlength: 100
       - name: date
         label: 日付
         type: date
@@ -71,4 +73,8 @@ content:
         type: text
       - name: link
         label: リンク先URL（任意）
+        description: https:// で始まるURL、またはサイト内のページ（例：plans.html）
         type: string
+        pattern:
+          regex: "^(https?://\\S+|[A-Za-z0-9][A-Za-z0-9._/-]*(#[A-Za-z0-9_-]+)?|#[A-Za-z0-9_-]+)?$"
+          message: "https:// で始まるURLか、サイト内のページ名を入力してください"

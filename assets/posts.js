@@ -13,11 +13,22 @@
     return m ? m[1] + '.' + ('0' + m[2]).slice(-2) + '.' + ('0' + m[3]).slice(-2) : '';
   }
   function key(d) { return ymd(d).replace(/\./g, ''); }
-  function img(p) {
-    if (!p) return '';
-    return String(p).replace(/^\/+/, ''); // 公開URL直下の相対パスにそろえる
+  // 投稿のリンク：http(s)・サイト内のページ・電話だけを許可（javascript: などは無効化）
+  function safeUrl(u) {
+    u = String(u || '').trim();
+    if (!u) return '';
+    if (/^https?:\/\//i.test(u) || /^tel:[0-9+\-]+$/i.test(u)) return u;
+    if (/^[a-z0-9][a-z0-9._\-\/]*(\.html)?(#[a-z0-9_\-]+)?$/i.test(u) || /^#[a-z0-9_\-]+$/i.test(u)) return u;
+    return '';
   }
-  function isExternal(u) { return /^https?:\/\//.test(u || ''); }
+  // 写真：サイト内にアップロードした画像だけを表示
+  function img(p) {
+    p = String(p || '').trim().replace(/^\/+/, '');
+    if (!/^assets\/uploads\/[^"'<>?#\\]+\.(jpe?g|png|webp|gif|heic)$/i.test(p) || p.indexOf('..') >= 0) return '';
+    try { p = decodeURI(p); } catch (e) {}
+    return encodeURI(p);
+  }
+  function isExternal(u) { return /^https?:\/\//i.test(u || ''); }
   function load(path) {
     return fetch(path + '?v=' + Date.now(), { cache: 'no-store' }).then(function (r) {
       if (!r.ok) throw new Error(r.status);
@@ -36,6 +47,7 @@
   }
 
   function newsRow(n, i, onListPage) {
+    n = Object.assign({}, n, { link: safeUrl(n.link) });
     var imp = n.category === '重要' || n.pinned;
     var title = imp ? '<b>' + esc(n.title) + '</b>' : esc(n.title);
     var date = n.pinned ? '—' : ymd(n.date);
@@ -58,7 +70,7 @@
   function renderNews(el, list) {
     var limit = parseInt(el.getAttribute('data-limit') || '0', 10);
     var onListPage = !limit;
-    var items = sortNews(list);
+    var items = sortNews(list).slice(0, 300);
     var shown = limit ? items.slice(0, limit) : items;
     el.innerHTML = shown.length ? shown.map(function (n) { return newsRow(n, items.indexOf(n), onListPage); }).join('')
       : '<li class="none">現在お知らせはありません。</li>';
@@ -112,9 +124,10 @@
 
   function reportCard(r, blog) {
     var k = BOATKEY[r.boat] || '';
-    var photo = r.photo ? '<img class="report-photo" src="' + esc(img(r.photo)) + '" alt="' + esc((r.boat || '') + ' ' + (r.method || '') + 'の釣果') + '" loading="lazy">' : '';
+    var src = img(r.photo);
+    var photo = src ? '<img class="report-photo" src="' + esc(src) + '" alt="' + esc((r.boat || '') + ' ' + (r.method || '') + 'の釣果') + '" loading="lazy">' : '';
     var comment = r.comment ? '<span class="catch comment">' + nl2br(r.comment) + '</span>' : '';
-    return '<article class="report' + (r.photo ? ' has-photo' : '') + '" data-boat="' + k + '">' + photo +
+    return '<article class="report' + (src ? ' has-photo' : '') + '" data-boat="' + k + '">' + photo +
       '<div class="report-body"><span class="top"><span class="boat-tag">' + esc(r.boat || '') + '</span><span class="mono meta">' + ymd(r.date) + '</span></span>' +
       '<span class="method">' + esc(r.method || '') + '</span>' +
       '<span class="catch">' + nl2br(r.catch || '') + '</span>' + comment + '</div></article>';
@@ -122,7 +135,7 @@
 
   function renderReports(el, list) {
     var limit = parseInt(el.getAttribute('data-limit') || '0', 10);
-    var items = sortReports(list);
+    var items = sortReports(list).slice(0, 300);
     var shown = limit ? items.slice(0, limit) : items;
     el.innerHTML = shown.map(function (r) { return reportCard(r); }).join('');
     var empty = document.querySelector('[data-report-empty]');

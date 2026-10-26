@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-src https://www.google.com https://maps.google.com https://calendar.google.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=no">
 <title>一休丸｜城ヶ島（三浦市）の釣り船・渡船｜一休フィッシングセンター</title>
 <meta name="description" content="神奈川県三浦市・城ヶ島の釣り船・渡船（磯渡し）なら一休丸（一休フィッシングセンター）。創業50年以上、城ヶ島唯一の船宿。仕立て・乗合の船釣りと離れ磯への渡船。初心者・ご家族も手ぶらで楽しめます。">
 <link rel="canonical" href="https://ikkyumaru.github.io/">
@@ -195,16 +198,7 @@
   <a href="https://line.me/R/ti/p/@346tuzef?ts=06191040&amp;oat_content=url" class="cta-line" target="_blank" rel="noopener">LINEで予約</a>
 </div>
 
-<script>
-(function(){
-  var btn=document.querySelector('.menu-btn'),nav=document.getElementById('gnav');
-  btn.addEventListener('click',function(){var o=document.body.classList.toggle('menu-open');btn.setAttribute('aria-expanded',o);});
-  nav.addEventListener('click',function(e){if(e.target.closest('a')){document.body.classList.remove('menu-open');btn.setAttribute('aria-expanded','false');}});
-  var v=document.querySelector('.hero-bg');
-  if(v&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();}
-})();
-
-</script>
-<script src="assets/posts.js"></script>
+<script src="assets/site.js" defer></script>
+<script src="assets/posts.js" defer></script>
 </body>
 </html>
